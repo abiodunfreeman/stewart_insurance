@@ -37,10 +37,7 @@ exports.createLead = async (req, res, next) => {
   console.log(req.body);
   try {
     const lead = await Lead.create(req.body);
-    res.status(201).json({
-      success: true,
-      data: lead,
-    });
+    res.status(201).redirect('/leads'); // temp redirect to lead, should prob redirect to homepage or back to form page
   } catch (err) {
     console.log(`${err}`.red);
     res.status(400).json({ success: false, err: err.message });

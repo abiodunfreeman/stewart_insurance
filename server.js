@@ -1,7 +1,7 @@
 const express = require('express');
 const colors = require('colors');
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
+
 const connectDB = require('./config/db');
 
 // Load env vars
@@ -13,9 +13,6 @@ const app = express();
 
 // serve static files in /public
 app.use(express.static(__dirname + '/public'));
-
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // sets view engine to PUG
 app.set('views', './views');
