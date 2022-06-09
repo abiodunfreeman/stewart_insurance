@@ -1,0 +1,30 @@
+extends layout
+block content 
+    a(href="/leads/new") 
+        h2 new
+    ul 
+        for lead in leads 
+        
+              
+            if lead.contacted 
+                li.lead-card.contacted 
+                    h3= lead.name 
+                    h4= lead.email
+                    h4= lead.phone 
+                    h4= lead.message 
+                    h5= lead.contacted
+                    a(href=`/leads/${lead._id}`) 
+                        h5= lead._id
+                    form(action="/leads/new", method="") 
+                        button(type="button")= "mark contacted" 
+            else 
+                li.lead-card
+                    h3= lead.name 
+                    h4= lead.email
+                    h4= lead.phone 
+                    h4= lead.message 
+                    h5= lead.contacted
+                    a(href=`/leads/${lead._id}`) 
+                        h5= lead._id
+                    form(action="/leads/new", method="") 
+                        button(type="button")= "mark contacted" 

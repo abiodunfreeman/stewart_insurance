@@ -19,6 +19,10 @@ const LeadSchema = mongoose.Schema({
     maxlength: [20, 'Phone number can not be longer than 20 characters'],
   },
   message: String,
+  contacted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('Lead', LeadSchema);

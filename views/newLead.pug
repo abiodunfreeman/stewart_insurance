@@ -1,0 +1,12 @@
+extends layout 
+block content 
+    h1= "NEW LEAD PAGE"
+    form(action="/leads" method="POST" id="new-lead-form")
+        <label for = 'name'>Name</label>
+        input(type="text" id='name' name="name" placeholder="Please enter your name")
+        <label for = 'email'>Email</label>
+        input(type="text" id='email' name="email" placeholder="Please enter your email")
+        <label for = 'phone'>Phone</label>
+        input(type="text" id='phone' name="phone" placeholder="Please enter your phone")
+        input(type="textfield" name="message" placeholder="Please enter your message")
+        input(type="submit" value="submit")
