@@ -1,5 +1,7 @@
 extends layout
 block content 
+    a(href="/") 
+        h2 home
     a(href="/leads/new") 
         h2 new
     ul 
@@ -13,10 +15,14 @@ block content
                     h4= lead.phone 
                     h4= lead.message 
                     h5= lead.contacted
+                    form(action=`/leads/${lead._id}`, method="POST")
+                        input(type="hidden", name="contacted" value=`${lead.contacted}`)
+                        button(type="submit" ) toggle contacted 
                     form(action=`/leads/${lead._id}/delete`, method="post") 
                         button(type="submit") delete 
                     a(href=`/leads/${lead._id}`) 
                         h5= lead._id
+
             else 
                 li.lead-card
                     h3= lead.name 
@@ -24,6 +30,9 @@ block content
                     h4= lead.phone 
                     h4= lead.message 
                     h5= lead.contacted
+                    form(action=`/leads/${lead._id}`, method="POST")
+                        input(type="hidden", name="contacted" value=`${lead.contacted}`)
+                        button(type="submit" ) toggle contacted 
                     form(action=`/leads/${lead._id}/delete`, method="post") 
                         button(type="submit") delete 
                     a(href=`/leads/${lead._id}`) 
