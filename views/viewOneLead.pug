@@ -12,3 +12,5 @@ block content
         form(action=`/leads/${lead._id}/delete`, method="POST")
             //- input(type="hidden", name="contacted" value=`${lead.contacted}`)
             button(type="submit" ) delete lead
+        a(href=`/leads/json/${lead._id}`)
+            h2 JSON

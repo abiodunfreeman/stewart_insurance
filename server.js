@@ -1,7 +1,8 @@
 const express = require('express');
 const colors = require('colors');
 const dotenv = require('dotenv');
-
+const helmet = require('helmet');
+const compression = require('compression');
 const connectDB = require('./config/db');
 
 // Load env vars
@@ -18,6 +19,10 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', './views');
 app.set('view engine', 'pug');
 
+//compresses all routes
+app.use(compression());
+//protects against http attacks
+app.use(helmet());
 // Body Parser
 app.use(express.json());
 

@@ -92,3 +92,31 @@ exports.deleteLead = async (req, res, next) => {
     res.status(400).json({ success: false, err: err.message });
   }
 };
+// @desc    GET all leads in JSON
+// @route   GET /leads/json
+// @access  Public
+exports.getLeadsJSON = async (req, res, next) => {
+  try {
+    const leads = await Lead.find();
+    res.status(200).json({ success: true, data: leads });
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
+// @desc    GET one lead in JSON
+// @route   GET /leads/json/:id
+// @access  Public
+exports.getOneLeadJSON = async (req, res, next) => {
+  try {
+    const lead = await Lead.findById(req.params.id, {});
+    res.status(200).json({ success: true, data: lead });
+    if (!lead) {
+      console.log(`${err}`.red);
+      res.status(400).json({ success: false, err: err.message });
+    }
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
