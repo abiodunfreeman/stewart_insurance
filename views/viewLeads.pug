@@ -13,10 +13,10 @@ block content
                     h4= lead.phone 
                     h4= lead.message 
                     h5= lead.contacted
+                    form(action=`/leads/${lead._id}/delete`, method="post") 
+                        button(type="submit") delete 
                     a(href=`/leads/${lead._id}`) 
                         h5= lead._id
-                    form(action="/leads/new", method="") 
-                        button(type="button")= "mark contacted" 
             else 
                 li.lead-card
                     h3= lead.name 
@@ -24,7 +24,7 @@ block content
                     h4= lead.phone 
                     h4= lead.message 
                     h5= lead.contacted
+                    form(action=`/leads/${lead._id}/delete`, method="post") 
+                        button(type="submit") delete 
                     a(href=`/leads/${lead._id}`) 
-                        h5= lead._id
-                    form(action="/leads/new", method="") 
-                        button(type="button")= "mark contacted" 
+                        h5= lead._id  

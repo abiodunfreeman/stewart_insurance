@@ -43,3 +43,46 @@ exports.createLead = async (req, res, next) => {
     res.status(400).json({ success: false, err: err.message });
   }
 };
+// @desc    Update a lead
+// @route   PUT /leads/:id
+// @access  Public
+exports.updateLead = async (req, res, next) => {
+  console.log('FUCK');
+  try {
+    const lead = await Lead.findByIdAndUpdate(
+      req.params.id,
+      { contacted: req.body.contacted === 'true' ? false : true },
+      {
+        new: true,
+      }
+    );
+    console.log(lead);
+    res.status(200).render('viewOneLead', { lead, title: 'One Lead' });
+    if (!lead) {
+      console.log(`${err}`.red);
+      res.status(400).json({ success: false, err: err.message });
+    }
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};
+// @desc    Delete a lead
+// @route   DELETE /leads/:id
+// @access  Public
+exports.deleteLead = async (req, res, next) => {
+  console.log('DELETED'.red.bold.underline);
+  console.log(req.params.id);
+  try {
+    const lead = await Lead.findByIdAndDelete(req.params.id);
+    res.status(200).redirect('/leads');
+    console.log(`${lead._id} succesfully deleted`);
+    if (!lead) {
+      console.log(`${err}`.red);
+      res.status(400).json({ success: false, err: err.message });
+    }
+  } catch (err) {
+    console.log(`${err}`.red);
+    res.status(400).json({ success: false, err: err.message });
+  }
+};

@@ -2,6 +2,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  list-style: none;
 }
 
 .lead-card {
@@ -9,15 +10,19 @@ ul {
   border: 3px solid purple;
 }
 
-.contacted {
-  border-color: green;
-}
-
 #new-lead-form {
   max-width: 500px;
   border: 3px solid black;
   display: flex;
   flex-direction: column;
+}
+
+.one-lead-container {
+  border: 4px solid purple;
+}
+
+.contacted {
+  border-color: green;
 }
 
 /*# sourceMappingURL=style.css.map */

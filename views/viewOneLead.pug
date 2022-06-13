@@ -1,4 +1,14 @@
 extends layout 
-block content 
-    h1= lead.name 
-    h2= "One Lead Page"
+block content
+    div(class=`one-lead-container ${lead.contacted ? "contacted" : ""}`) 
+        h1= lead.name
+        h2= "contacted: " + lead.contacted 
+        h3= lead._id
+        form(action=`/leads/${lead._id}`, method="POST")
+            input(type="hidden", name="contacted" value=`${lead.contacted}`)
+            button(type="submit" ) toggle contacted 
+        a(href="/leads")
+            h3 back to leads 
+        form(action=`/leads/${lead._id}/delete`, method="POST")
+            //- input(type="hidden", name="contacted" value=`${lead.contacted}`)
+            button(type="submit" ) delete lead
